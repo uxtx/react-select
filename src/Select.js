@@ -265,7 +265,7 @@ const Select = React.createClass({
 	handleMouseDown (event) {
 		// if the event was triggered by a mousedown and not the primary
 		// button, or if the component is disabled, ignore it.
-		if (this.props.disabled || (event.type === 'mousedown' && event.button !== 0)) {
+		if (this.props.disabled || (event.type === 'mousedown' && (event.button && event.button !== 0))) {
 			return;
 		}
 
@@ -284,6 +284,7 @@ const Select = React.createClass({
 				isOpen: !this.state.isOpen,
 			});
 		}
+		console.log('yay we got here', this.state);
 
 		if (this.state.isFocused) {
 			// On iOS, we can get into a state where we think the input is focused but it isn't really,
